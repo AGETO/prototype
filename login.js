@@ -48,8 +48,9 @@ new tabris.Button({
     background: "white",
     border: "1,126px solid #565656",
     textColor: "black"
-}).on("click", function () {
-    window.location("dashboard.js");
+}).on("select", function () {
+    page1.open();
+    page.close();
 }).appendTo(page);
 //}).on("select", function() {
 //  populateMessage();
@@ -69,3 +70,13 @@ page.apply({
 });
 
 page.open();
+
+var page1 = new tabris.Page({
+    topLevel: true
+});
+
+new tabris.ImageView({
+    id: "#myzeiss",
+    image: {src: "images/myzeiss.png"},
+    layoutData: {centerX: 0, top: 10, width: 239, height: 101}
+}).appendTo(page1);
