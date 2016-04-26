@@ -1,6 +1,6 @@
 {
-  "name": "MyZEISS",
-  "description": "MyZEISS Mobile App",
+  "name": "Prototype",
+  "description": "Prototype for a mobile app",
   "main": "app.js",
   "dependencies": {
     "tabris": "^1.7.0"
