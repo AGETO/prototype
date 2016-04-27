@@ -21,17 +21,17 @@ new tabris.TextView({
     text: "Username"
 }).appendTo(page);
 
-new tabris.TextInput({
+var nameInput = new tabris.TextInput({
     id: "userNameInput"
 }).appendTo(page);
 
 new tabris.TextView({
     id: "passwordLabel",
     alignment: "left",
-    text: "Password"
+	text: "password"
 }).appendTo(page);
 
-new tabris.TextInput({
+var passwordInput = new tabris.TextInput({
     id: "passwordInput",
     type: "password"
 }).appendTo(page);
@@ -49,8 +49,21 @@ new tabris.Button({
     border: "1,126px solid #565656",
     textColor: "black"
 }).on("select", function () {
-    require("./menu.js").create('menu.js').open();
-    page.close();
+	var name = nameInput.get("text");
+	var password = passwordInput.get("text");
+	loginUser(name,password);
+}).appendTo(page);
+
+new tabris.Button({
+    id: "other",
+    text: "Sign in wo user",
+    background: "white",
+    border: "1,126px solid #565656",
+	layoutData:{centerX:0, top: "#done 10"},
+    textColor: "black"
+}).on("select", function () {
+	require("./menu.js").create('menu.js').open();
+	page.close();
 }).appendTo(page);
 
 page.apply({
@@ -68,3 +81,23 @@ page.apply({
 });
 
 page.open();
+
+function loginUser(name, password){
+	var xhttp = new XMLHttpRequest();
+	var url = "https://something-phoenix913.c9users.io:8081/api/user";
+	var params = "name=" + name + "&password=" + password;
+	xhttp.open("POST", url, true);
+	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	
+	xhttp.onreadystatechange = function() {
+	if (xhttp.readyState == 4 && xhttp.status == 200){
+		if(xhttp.responseText === "true"){
+			require("./menu.js").create('menu.js').open();
+			page.close();
+		}else{
+			console.log("Nope");
+		}
+	}};
+	
+	xhttp.send(params);
+}
