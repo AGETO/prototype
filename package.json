@@ -2,7 +2,14 @@
   "name": "Prototype",
   "description": "Prototype for a mobile app",
   "main": "app.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
-    "tabris": "^1.7.0"
+    "tabris": "^1.7.0",
+    "express": "~4.12.2",
+    "mysql": "~2.5.5",
+    "body-parser": "~1.12.0",
+    "MD5": "~1.2.1"
   }
 }

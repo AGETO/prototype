@@ -1,4 +1,6 @@
-require("./login.js");
-require("./dashboard.js");
+require("./pages/login.js");
+require("./pages/menu.js");
+require("./pages/devices.js");
+require("./pages/details.js");
 
-//new tabris.Drawer().append(new tabris.PageSelector());
+
