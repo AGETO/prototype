@@ -234,12 +234,13 @@ exports.create = function () {
 
     var tray = new tabris.Composite({
         layoutData: {left: 5, right: 5, top: 0, bottom: 0},
-        cornerRadius: 2,
-        elevation: 100000
+        cornerRadius: 12,
+        elevation: 100000,
+        opacity: 0.95
     }).appendTo(page);
 
     var strap = new tabris.Composite({
-        layoutData: {right: 16, bottom: 16, height: 66, width: 66},
+        layoutData: {right: 16, bottom: 5, height: 66, width: 66},
         background: "#e7e7e7",
         cornerRadius: 2,
         elevation: 100000
@@ -271,7 +272,7 @@ exports.create = function () {
 //Pete o'Donnell
     new tabris.ImageView({
         id: "pete",
-        layoutData: {left: 24, top: "#suptr 20"},
+        layoutData: {left: 24, top: "#suptr 10"},
         height: 117,
         width: 94,
         image: {src: "images/pete.png"}
@@ -280,7 +281,7 @@ exports.create = function () {
     new tabris.TextView({
         id: "pinfo",
         text: "Pete o'Donnell",
-        layoutData: {left: "#pete 5", top: 30},
+        layoutData: {left: "#pete 5", top: "#suptr 20"},
         font: "bold 18px"
     }).appendTo(scrollView2);
 
@@ -301,7 +302,7 @@ exports.create = function () {
     new tabris.ImageView({
         id: "icons1",
         image: {src: "images/icons.png"},
-        layoutData: {left: 0, right: 0, top: "#pstat 20"},
+        layoutData: {left: 0, right: 0, top: "#pstat 25"},
         height: 72
     }).appendTo(scrollView2);
 
@@ -339,7 +340,7 @@ exports.create = function () {
     new tabris.ImageView({
         id: "icons2",
         image: {src: "images/icons.png"},
-        layoutData: {left: 0, right: 0, top: "#rstat 20"},
+        layoutData: {left: 0, right: 0, top: "#rstat 25"},
         height: 72
     }).appendTo(scrollView2);
 
@@ -347,8 +348,8 @@ exports.create = function () {
 
     new tabris.ImageView({
         id: "virgina",
-        layoutData: {left: 24, top: "#icons2 15"},
-        image: {src: "images/comm.png"},
+        layoutData: {left: 24, top: "#icons2 5"},
+        image: {src: "images/virgina.png"},
         height: 117,
         width: 94
     }).appendTo(scrollView2);
@@ -356,7 +357,7 @@ exports.create = function () {
     new tabris.TextView({
         id: "vinfo",
         text: "Virgina Robertson",
-        layoutData: {left: "#virgina 5", top: "#icons2 5"},
+        layoutData: {left: "#virgina 5", top: "#icons2 15"},
         font: "bold 18px"
     }).appendTo(scrollView2);
 
@@ -377,8 +378,14 @@ exports.create = function () {
     new tabris.ImageView({
         id: "icons3",
         image: {src: "images/icons.png"},
-        layoutData: {left: 0, right: 0, top: "#vstat 20"},
+        layoutData: {left: 0, right: 0, top: "#vstat 25"},
         height: 72
+    }).appendTo(scrollView2);
+
+    new tabris.ImageView({
+        id: "placeholder",
+        layoutData: {left: 0, right: 0, top: "#icons3 15"},
+        bottom: 16
     }).appendTo(scrollView2);
 
     trayContent.on("resize", function () {
