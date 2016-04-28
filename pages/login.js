@@ -28,7 +28,7 @@ var nameInput = new tabris.TextInput({
 new tabris.TextView({
     id: "passwordLabel",
     alignment: "left",
-	text: "password"
+    text: "Password"
 }).appendTo(page);
 
 var passwordInput = new tabris.TextInput({
@@ -95,7 +95,12 @@ function loginUser(name, password){
 			require("./menu.js").create('menu.js').open();
 			page.close();
 		}else{
-			console.log("Nope");
+            new tabris.TextView({
+                layoutData: {top: "#signin 2", centerX: 0},
+                text: "Wrong username or password!",
+                font: "14px",
+                textColor: "red"
+            }).appendTo(page);
 		}
 	}};
 	
