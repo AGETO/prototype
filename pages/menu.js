@@ -23,6 +23,8 @@ exports.create = function () {
         id: "#new",
         image: {src: "images/new.png"},
         layoutData: {right: 40, top: "#myzeiss 110", width: 124, height: 136}
+    }).on("select", function () {
+        require("./codescanner.js").create('codescanner.js').open();
     }).appendTo(page);
 
     new tabris.ImageView({
