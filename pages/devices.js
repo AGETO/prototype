@@ -21,8 +21,7 @@ exports.create = function () {
         border: "1,126px solid #565656",
         elevation: 9999
     }).on("select", function () {
-        camera.open();
-        page.close();
+        require("./codescanner.js").create('codescanner.js').open();
     }).appendTo(page);
 
     new tabris.TextInput({
