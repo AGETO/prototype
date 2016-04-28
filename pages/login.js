@@ -22,7 +22,13 @@ new tabris.TextView({
 }).appendTo(page);
 
 var nameInput = new tabris.TextInput({
-    id: "userNameInput"
+    id: "userNameInput",
+    text: localStorage.getItem("username") || ""
+}).on("change", function () {
+    var selection = rememberMe.get("selection");
+    if (selection == true) {
+        localStorage.setItem("username", nameInput.get("text"));
+    }
 }).appendTo(page);
 
 new tabris.TextView({
@@ -36,11 +42,14 @@ var passwordInput = new tabris.TextInput({
     type: "password"
 }).appendTo(page);
 
-new tabris.CheckBox({
+
+var rememberMe = new tabris.CheckBox({
     id: "remember",
     align: "center",
-    text: "Remember me?"
+    text: "Remember me?",
+    selection: true
 }).appendTo(page);
+
 
 new tabris.Button({
     id: "done",
@@ -51,12 +60,14 @@ new tabris.Button({
 }).on("select", function () {
 	var name = nameInput.get("text");
 	var password = passwordInput.get("text");
-	loginUser(name,password);
+    var selection = rememberMe.get("selection");
+    check(selection);
+    loginUser(name, password);
 }).appendTo(page);
 
 new tabris.Button({
     id: "other",
-    text: "Sign in wo user",
+    text: "Sign in w/o user",
     background: "white",
     border: "1,126px solid #565656",
 	layoutData:{centerX:0, top: "#done 10"},
@@ -81,6 +92,15 @@ page.apply({
 });
 
 page.open();
+
+function check(selection) {
+    rememberMe.get("selection");
+    if (selection == true) {
+        localStorage.setItem("username", nameInput.get("text"));
+    } else {
+        localStorage.removeItem("username");
+    }
+}
 
 function loginUser(name, password){
 	var xhttp = new XMLHttpRequest();
