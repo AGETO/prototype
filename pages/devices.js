@@ -26,7 +26,7 @@ exports.create = function () {
 
     new tabris.TextInput({
         id: "search",
-        text: "Search",
+        placeholder: "Search",
         alignment: "left",
         width: 120,
         elevation: 9999
@@ -36,22 +36,22 @@ exports.create = function () {
         left: 0, right: 0, top: 0, bottom: 0
     }).appendTo(page);
 
-//device 1 begins
+//DURAMAX LTE
     new tabris.ImageView({
         id: "dev1",
-        image: {src: "images/device.png"}
+        image: {src: "images/duramax_lte.jpg"}
     }).appendTo(scrollView);
 
     new tabris.TextView({
         id: "dev1info",
         alignment: "left",
-        text: "Device type\nXYZ - Identifier"
+        text: "DuraMax LTE\nMeasuring Equipment"
     }).appendTo(scrollView);
 
     new tabris.TextView({
         id: "status",
         alignment: "left",
-        text: "Status"
+        text: "Last measurement:\n26.04.2016 14:20"
     }).appendTo(scrollView);
 
     new tabris.TextView({
@@ -72,14 +72,14 @@ exports.create = function () {
         text: "Details...",
         highlightOnTouch: true
     }).on("tap", function () {
-        require("./details.js").create('details.js').open();
+        require("./duramax.js").create('duramax.js').open();
     }).appendTo(scrollView);
 
     new tabris.ImageView({
         id: "line",
         image: {src: "images/joon.png"}
     }).appendTo(scrollView);
-//device 1 ends
+//DURAMAX LTE ends
 
 //"Filter by" button
     new tabris.Button({
@@ -91,22 +91,22 @@ exports.create = function () {
         //camera.open();
     }).appendTo(scrollView);
 
-//device 2 begins
+//HANDYSURF
     new tabris.ImageView({
         id: "dev2",
-        image: {src: "images/device.png"}
+        image: {src: "images/handysurf.jpg"}
     }).appendTo(scrollView);
 
     new tabris.TextView({
         id: "dev2info",
         alignment: "left",
-        text: "Device type\nXYZ - Identifier"
+        text: "HANDYSURF\nPortable roughness measurement tool"
     }).appendTo(scrollView);
 
     new tabris.TextView({
         id: "status2",
         alignment: "left",
-        text: "Status"
+        text: "Active"
     }).appendTo(scrollView);
 
     new tabris.TextView({
@@ -127,31 +127,31 @@ exports.create = function () {
         text: "Details...",
         highlightOnTouch: true
     }).on("tap", function () {
-        require("./details.js").create('details.js').open();
+        require("./handysurf.js").create('handysurf.js').open();
     }).appendTo(scrollView);
 
     new tabris.ImageView({
         id: "line2",
         image: {src: "images/joon.png"}
     }).appendTo(scrollView);
-//device 2 ends
+//HANDYSURF END
 
-//device 3 begins
+//O-INSPECT
     new tabris.ImageView({
         id: "dev3",
-        image: {src: "images/device.png"}
+        image: {src: "images/o_inspect.jpg"}
     }).appendTo(scrollView);
 
     new tabris.TextView({
         id: "dev3info",
         alignment: "left",
-        text: "Device type\nXYZ - Identifier"
+        text: "O-INSPECT 322\Measuring range [dm] 3/2/2"
     }).appendTo(scrollView);
 
     new tabris.TextView({
         id: "status3",
         alignment: "left",
-        text: "Status"
+        text: "Last measurement:\n 29.04.2016 15:01"
     }).appendTo(scrollView);
 
     new tabris.TextView({
@@ -172,31 +172,31 @@ exports.create = function () {
         text: "Details...",
         highlightOnTouch: true
     }).on("tap", function () {
-        require("./details.js").create('details.js').open();
+        require("./oinspect.js").create('oinspect.js').open();
     }).appendTo(scrollView);
 
     new tabris.ImageView({
         id: "line3",
         image: {src: "images/joon.png"}
     }).appendTo(scrollView);
-//device 3 ends
+//O-INSPECT ends
 
-//device 4 begins
+//SURFCOM FLEX
     new tabris.ImageView({
         id: "dev4",
-        image: {src: "images/device.png"}
+        image: {src: "images/surfcom_flex.jpg"}
     }).appendTo(scrollView);
 
     new tabris.TextView({
         id: "dev4info",
         alignment: "left",
-        text: "Device type\nXYZ - Identifier"
+        text: "SURFCOM FLEX\nMobile control and analysis unit"
     }).appendTo(scrollView);
 
     new tabris.TextView({
         id: "status4",
         alignment: "left",
-        text: "Status"
+        text: "Active"
     }).appendTo(scrollView);
 
     new tabris.TextView({
@@ -217,14 +217,14 @@ exports.create = function () {
         text: "Details...",
         highlightOnTouch: true
     }).on("tap", function () {
-        require("./details.js").create('details.js').open();
+        require("./surfcom.js").create('surfcom.js').open();
     }).appendTo(scrollView);
 
     new tabris.ImageView({
         id: "line4",
         image: {src: "images/joon.png"}
     }).appendTo(scrollView);
-//device 4 ends
+//SURFCOM FLEX ends
 
     //support tray
     var trayHeight;
