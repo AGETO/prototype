@@ -20,11 +20,19 @@ exports.create = function () {
     }).appendTo(page);
 
     new tabris.ImageView({
-        id: "#new",
-        image: {src: "images/new.png"},
-        layoutData: {right: 40, top: "#myzeiss 110", width: 124, height: 136}
+        id: "#diagnostics",
+        image: {src: "images/qr.png"},
+        layoutData: {right: 57, top: "#myzeiss 110", width: 74, height: 86}
     }).on("tap", function () {
         require("./codescanner.js").create('codescanner.js').open();
+    }).appendTo(page);
+
+    new tabris.TextView({
+        id: "device_d",
+        text: "Device\nDiagnostics",
+        alignment: "center",
+        layoutData: {right: 42, top: "#diagnostics 189"},
+        font: "20px"
     }).appendTo(page);
 
     new tabris.ImageView({
@@ -36,15 +44,30 @@ exports.create = function () {
     new tabris.ImageView({
         id: "#settings",
         image: {src: "images/settings.png"},
-        layoutData: {right: 40, top: "#new 250", width: 104, height: 116}
+        layoutData: {right: 40, top: "#diagnostics 250", width: 104, height: 116}
     }).appendTo(page);
 
     new tabris.ImageView({
         id: "#support",
         image: {src: "images/support.png"},
-        layoutData: {right: 40, left: 40, top: "#settings 375", height: 116}
+        layoutData: {left: 40, top: "#settings 375", height: 116}
     }).appendTo(page);
 
+    new tabris.ImageView({
+        id: "addnew",
+        image: {src: "images/newdevice.jpg"},
+        layoutData: {right: 46, top: "#settings 355", width: 104, height: 116}
+    }).on("tap", function () {
+        require("./codescanner.js").create('codescanner.js').open();
+    }).appendTo(page);
+
+    new tabris.TextView({
+        id: "addnew",
+        text: "Register Device",
+        alignment: "right",
+        layoutData: {right: 32, top: "#zdev 460"},
+        font: "20px"
+    }).appendTo(page);
 
     return page;
 };
