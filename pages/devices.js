@@ -9,27 +9,28 @@ exports.create = function () {
 
     new tabris.ImageView({
         id: "#zdev",
-        image: {src: "images/zdev.png"},
-        layoutData: {centerX: 0, top: 0},
-        elevation: 999
+        image: {src: "images/zdev2.png"},
+        layoutData: {left: 0, right: 0, top: 0, bottom: 435},
+        elevation: 1,
+        opacity: 1.0
     }).appendTo(page);
 
     new tabris.Button({
         id: "scan",
         text: "Scan",
         background: "white",
-        border: "1,126px solid #565656",
-        elevation: 9999
+        // border: "1,126px solid #565656"
+        elevation: 90
     }).on("select", function () {
         require("./codescanner.js").create('codescanner.js').open();
     }).appendTo(page);
 
     new tabris.TextInput({
         id: "search",
-        placeholder: "Search",
+        text: "Search",
         alignment: "left",
         width: 120,
-        elevation: 9999
+        elevation: 2
     }).appendTo(page);
 
     var scrollView = new tabris.ScrollView({
@@ -444,7 +445,7 @@ exports.create = function () {
     page.apply({
 
         "#search": {layoutData: {top: 14, left: 160, right: 80}, font: "13px", opacity: 0.3, border: "0px"},
-        "#scan": {layoutData: {left: "#search 10", right: 10, top: 12, height: 38}, font: "12px", opacity: 0.8},
+        "#scan": {layoutData: {left: "#search 10", right: 10, top: 12, height: 38}, font: "12px"},
         "#fordrawer": {layoutData: {left: -25, top: 100}, height: 253, width: 84},
 
         //device 1
