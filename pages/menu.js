@@ -5,24 +5,43 @@ exports.create = function () {
     });
     // ... add some more widgets, apply layout, etc ...
     new tabris.ImageView({
-        id: "#myzeiss",
-        image: {src: "images/myzeiss.png"},
-        layoutData: {centerX: 0, top: 0, width: 239, height: 101}
+        id: "zdev",
+        image: {src: "images/logo.png"},
+        layoutData: {left: 120, top: 5, height: 65, width: 58},
+        elevation: 1,
+        opacity: 1.0
+    }).appendTo(page);
+
+    new tabris.TextView({
+        id: "myzeiss",
+        layoutData: {left: "#zdev 3", top: 17},
+        text: "MyZEISS",
+        font: "20px",
+        textColor: "#221f8c"
     }).appendTo(page);
 
     new tabris.ImageView({
-        id: "#devices",
+        id: "devices",
         image: {src: "images/mydevices.png"},
-        layoutData: {left: 40, top: "#myzeiss 110", width: 104, height: 116},
+        layoutData: {left: 40, top: "#zdev 22", width: 104, height: 116},
         highlightOnTouch: true
     }).on("tap", function () {
         require("./devices.js").create('devices.js').open();
     }).appendTo(page);
 
+
+    new tabris.TextView({
+        id: "add_d",
+        text: "My\nDevices",
+        alignment: "center",
+        layoutData: {left: 48, top: "#devices -15"},
+        font: "20px"
+    }).appendTo(page);
+
     new tabris.ImageView({
-        id: "#diagnostics",
+        id: "diagnostics",
         image: {src: "images/qr.png"},
-        layoutData: {right: 57, top: "#myzeiss 110", width: 74, height: 86}
+        layoutData: {right: 57, top: "#zdev 35", width: 74, height: 86}
     }).on("tap", function () {
         require("./diagnostics.js").create('diagnostics.js').open();
     }).appendTo(page);
@@ -31,42 +50,66 @@ exports.create = function () {
         id: "device_d",
         text: "Device\nDiagnostics",
         alignment: "center",
-        layoutData: {right: 42, top: "#diagnostics 189"},
+        layoutData: {right: 42, top: "#diagnostics 2"},
         font: "20px"
     }).appendTo(page);
 
     new tabris.ImageView({
-        id: "#news",
-        image: {src: "images/news.png"},
-        layoutData: {left: 40, top: "#devices 245", width: 114, height: 126}
+        id: "news",
+        image: {src: "images/news.jpg"},
+        layoutData: {left: 50, top: "#device_d 5", width: 74, height: 86}
+    }).appendTo(page);
+
+    new tabris.TextView({
+        id: "news_d",
+        text: "News",
+        alignment: "center",
+        layoutData: {left: 60, top: "#news -5"},
+        font: "20px"
     }).appendTo(page);
 
     new tabris.ImageView({
-        id: "#settings",
-        image: {src: "images/settings.png"},
-        layoutData: {right: 40, top: "#diagnostics 250", width: 104, height: 116}
+        id: "settings",
+        image: {src: "images/settings.jpg"},
+        layoutData: {right: 40, top: "#device_d 2", width: 104, height: 101}
+    }).appendTo(page);
+
+    new tabris.TextView({
+        id: "settings_d",
+        text: "Settings",
+        alignment: "center",
+        layoutData: {right: 58, top: "#settings -16"},
+        font: "20px"
     }).appendTo(page);
 
     new tabris.ImageView({
-        id: "#support",
+        id: "support",
         image: {src: "images/support.png"},
-        layoutData: {left: 40, top: "#settings 375", height: 116}
+        layoutData: {left: 50, top: "#news_d 5", width: 84, height: 96}
+    }).appendTo(page);
+
+    new tabris.TextView({
+        id: "support_d",
+        text: "Support",
+        alignment: "center",
+        layoutData: {left: 58, top: "#support -20"},
+        font: "20px"
     }).appendTo(page);
 
     new tabris.ImageView({
         id: "addnew",
         image: {src: "images/newdevice.jpg"},
-        layoutData: {right: 46, top: "#settings 355", width: 104, height: 116}
+        layoutData: {right: 46, top: "#settings 5", width: 94, height: 106}
     }).on("tap", function () {
         require("./codescanner.js").create('codescanner.js').open();
     }).appendTo(page);
 
     new tabris.TextView({
-        id: "addnew",
+        id: "addnew_d",
         text: "Register Device",
         alignment: "right",
-        layoutData: {right: 32, top: "#zdev 460"},
-        font: "20px"
+        layoutData: {right: 32, top: "#addnew -18"},
+        font: "19px"
     }).appendTo(page);
 
     return page;

@@ -10,12 +10,29 @@ exports.create = function () {
         require("./devices.js").create('devices.js').open();
     });
 
+    //header
     new tabris.ImageView({
         id: "zdev",
-        image: {src: "images/zdev2.png"},
-        layoutData: {centerX: 0, top: 0},
-        elevation: 999
+        image: {src: "images/logo.png"},
+        layoutData: {left: 3, top: 0, height: 65, width: 58},
+        elevation: 1,
+        opacity: 1.0
     }).appendTo(page);
+
+    new tabris.TextView({
+        id: "myzeiss",
+        layoutData: {left: "#zdev 3", top: 17},
+        text: "MyZEISS",
+        font: "20px",
+        textColor: "#221f8c"
+    }).appendTo(page);
+
+    new tabris.ImageView({
+        image: {src: "images/joon2.png"},
+        layoutData: {left: 0, right: 0, top: "#myzeiss 25"},
+        opacity: 0.3
+    }).appendTo(page);
+//header end
 
     new tabris.ImageView({
         id: "devpic",

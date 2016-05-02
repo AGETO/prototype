@@ -10,12 +10,15 @@ exports.create = function () {
         require("./devices.js").create('devices.js').open();
     });
 
+    //header
     new tabris.ImageView({
         id: "zdev",
-        image: {src: "images/zdev2.png"},
-        layoutData: {centerX: 0, top: 0},
-        elevation: 999
+        image: {src: "images/logo.png"},
+        layoutData: {left: 8, top: 5, height: 65, width: 58},
+        elevation: 1,
+        opacity: 1.0
     }).appendTo(page);
+//header end
 
     new tabris.ImageView({
         id: "devpic",

@@ -7,13 +7,32 @@ exports.create = function () {
         require("./menu.js").create('menu.js').open();
     });
 
+    var scrollView = new tabris.ScrollView({
+        left: 0, right: 0, top: 0, bottom: 0
+    }).appendTo(page);
+
+    //header
     new tabris.ImageView({
-        id: "#zdev",
-        image: {src: "images/zdev2.png"},
-        layoutData: {left: 0, right: 0, top: 0, bottom: 435},
+        id: "zdev",
+        image: {src: "images/logo.png"},
+        layoutData: {left: 3, top: 0, height: 65, width: 58},
         elevation: 1,
         opacity: 1.0
-    }).appendTo(page);
+    }).appendTo(scrollView);
+
+    new tabris.TextView({
+        id: "myzeiss",
+        layoutData: {left: "#zdev 3", top: 17},
+        text: "MyZEISS",
+        font: "20px",
+        textColor: "#221f8c"
+    }).appendTo(scrollView);
+
+    new tabris.ImageView({
+        image: {src: "images/joon2.png"},
+        layoutData: {left: 0, right: 0, top: "#scan 20"},
+        opacity: 0.3
+    }).appendTo(scrollView);
 
     new tabris.Button({
         id: "scan",
@@ -23,19 +42,17 @@ exports.create = function () {
         elevation: 90
     }).on("select", function () {
         require("./codescanner.js").create('codescanner.js').open();
-    }).appendTo(page);
+    }).appendTo(scrollView);
 
     new tabris.TextInput({
         id: "search",
         text: "Search",
         alignment: "left",
         width: 120,
-        elevation: 2
-    }).appendTo(page);
-
-    var scrollView = new tabris.ScrollView({
-        left: 0, right: 0, top: 0, bottom: 0
-    }).appendTo(page);
+        elevation: 2,
+        background: "white"
+    }).appendTo(scrollView);
+//end of header
 
 //DURAMAX LTE
     new tabris.ImageView({
@@ -87,10 +104,10 @@ exports.create = function () {
         id: "filter",
         text: "Filter by...",
         background: "white",
-        border: "1,126px solid #565656"
+        border: "1,126px solid #565656",
+        elevation: 2
     }).on("select", function () {
-        //camera.open();
-    }).appendTo(scrollView);
+    }).appendTo(page);
 
 //HANDYSURF
     new tabris.ImageView({
@@ -445,12 +462,11 @@ exports.create = function () {
     page.apply({
 
         "#search": {layoutData: {top: 14, left: 160, right: 80}, font: "13px", opacity: 0.3, border: "0px"},
-        "#scan": {layoutData: {left: "#search 10", right: 10, top: 12, height: 38}, font: "12px"},
-        "#fordrawer": {layoutData: {left: -25, top: 100}, height: 253, width: 84},
+        "#scan": {layoutData: {left: "#search 10", right: 12, top: 12, height: 38}, font: "12px"},
 
         //device 1
-        "#dev1": {layoutData: {left: 10, top: "#zdev 80"}, width: 141, height: 124},
-        "#dev1info": {layoutData: {left: "#dev1 5", top: "#zdev 75"}, font: "bold 18px"},
+        "#dev1": {layoutData: {left: 10, top: "#zdev 32"}, width: 141, height: 124},
+        "#dev1info": {layoutData: {left: "#dev1 5", top: "#zdev 28"}, font: "bold 18px"},
         "#status": {layoutData: {left: "#dev1 5", top: "#dev1info 2"}, font: "14px"},
         "#warnings": {layoutData: {left: "#dev1 5", top: "#status 2"}, font: "14px"},
         "#messages": {layoutData: {left: "#dev1 5", top: "#warnings 2"}, font: "14px"},
@@ -459,9 +475,9 @@ exports.create = function () {
 
         //"Filter by..."
         "#filter": {
-            layoutData: {left: "#dev1info 5", top: "zdev 80", height: 40, right: 5},
+            layoutData: {left: 280, top: "zdev 80", height: 40, right: 5},
             font: "12px",
-            opacity: 0.8
+            opacity: 0.9
         },
 
         //device 2
