@@ -24,7 +24,7 @@ exports.create = function () {
         image: {src: "images/qr.png"},
         layoutData: {right: 57, top: "#myzeiss 110", width: 74, height: 86}
     }).on("tap", function () {
-        require("./codescanner.js").create('codescanner.js').open();
+        require("./diagnostics.js").create('diagnostics.js').open();
     }).appendTo(page);
 
     new tabris.TextView({

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="prototype" version="1.0.0">
+	<name>Prototype</name>
+	<description>
+		Prototype
+	</description>
+	<author email="dev@tabrisjs.com" href="https://tabrisjs.com">
+		Ivar & Rete-Keyt
+	</author>
+</widget>
