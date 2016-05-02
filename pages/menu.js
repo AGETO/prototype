@@ -86,6 +86,8 @@ exports.create = function () {
         id: "support",
         image: {src: "images/support.png"},
         layoutData: {left: 50, top: "#news_d 5", width: 84, height: 96}
+    }).on("tap", function () {
+        require("./support.js").create('support.js').open();
     }).appendTo(page);
 
     new tabris.TextView({
