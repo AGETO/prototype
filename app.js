@@ -7,5 +7,6 @@ require("./pages/handysurf.js");
 require("./pages/oinspect.js");
 require("./pages/surfcom.js");
 require("./pages/codescanner.js");
+require("./pages/questions.js");
 
 

@@ -23,8 +23,7 @@ exports.create = function () {
     new tabris.ImageView({
         id: "devices",
         image: {src: "images/mydevices.png"},
-        layoutData: {left: 40, top: "#zdev 20", width: 104, height: 116},
-        highlightOnTouch: true
+        layoutData: {left: 40, top: "#zdev 20", width: 104, height: 116}
     }).on("tap", function () {
         require("./devices.js").create('devices.js').open();
     }).appendTo(page);
