@@ -321,6 +321,8 @@ exports.create = function () {
         image: {src: "images/icons.png"},
         layoutData: {left: 0, right: 0, top: "#pstat 25"},
         height: 72
+    }).on("tap", function () {
+        cordova.InAppBrowser.open('tel:18004444444', '_system');
     }).appendTo(scrollView2);
 
 //Robert Salino
@@ -359,6 +361,8 @@ exports.create = function () {
         image: {src: "images/icons.png"},
         layoutData: {left: 0, right: 0, top: "#rstat 25"},
         height: 72
+    }).on("tap", function () {
+        cordova.InAppBrowser.open('tel:18004444444', '_system');
     }).appendTo(scrollView2);
 
 //Virgina Robertson
@@ -397,6 +401,8 @@ exports.create = function () {
         image: {src: "images/icons.png"},
         layoutData: {left: 0, right: 0, top: "#vstat 25"},
         height: 72
+    }).on("tap", function () {
+        cordova.InAppBrowser.open('tel:18004444444', '_system');
     }).appendTo(scrollView2);
 
     new tabris.ImageView({

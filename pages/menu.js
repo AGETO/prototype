@@ -23,7 +23,7 @@ exports.create = function () {
     new tabris.ImageView({
         id: "devices",
         image: {src: "images/mydevices.png"},
-        layoutData: {left: 40, top: "#zdev 22", width: 104, height: 116},
+        layoutData: {left: 40, top: "#zdev 20", width: 104, height: 116},
         highlightOnTouch: true
     }).on("tap", function () {
         require("./devices.js").create('devices.js').open();
@@ -41,7 +41,7 @@ exports.create = function () {
     new tabris.ImageView({
         id: "diagnostics",
         image: {src: "images/qr.png"},
-        layoutData: {right: 57, top: "#zdev 35", width: 74, height: 86}
+        layoutData: {right: 57, top: "#zdev 33", width: 74, height: 86}
     }).on("tap", function () {
         require("./diagnostics.js").create('diagnostics.js').open();
     }).appendTo(page);
@@ -57,7 +57,7 @@ exports.create = function () {
     new tabris.ImageView({
         id: "news",
         image: {src: "images/news.jpg"},
-        layoutData: {left: 50, top: "#device_d 5", width: 74, height: 86}
+        layoutData: {left: 50, top: "#device_d 8", width: 74, height: 86}
     }).appendTo(page);
 
     new tabris.TextView({
@@ -69,23 +69,9 @@ exports.create = function () {
     }).appendTo(page);
 
     new tabris.ImageView({
-        id: "settings",
-        image: {src: "images/settings.jpg"},
-        layoutData: {right: 40, top: "#device_d 2", width: 104, height: 101}
-    }).appendTo(page);
-
-    new tabris.TextView({
-        id: "settings_d",
-        text: "Settings",
-        alignment: "center",
-        layoutData: {right: 58, top: "#settings -16"},
-        font: "20px"
-    }).appendTo(page);
-
-    new tabris.ImageView({
         id: "support",
         image: {src: "images/support.png"},
-        layoutData: {left: 50, top: "#news_d 5", width: 84, height: 96}
+        layoutData: {left: 50, top: "#news_d 9", width: 84, height: 96}
     }).on("tap", function () {
         require("./support.js").create('support.js').open();
     }).appendTo(page);
@@ -94,14 +80,14 @@ exports.create = function () {
         id: "support_d",
         text: "Support",
         alignment: "center",
-        layoutData: {left: 58, top: "#support -20"},
+        layoutData: {left: 58, top: "#support -19"},
         font: "20px"
     }).appendTo(page);
 
     new tabris.ImageView({
         id: "addnew",
         image: {src: "images/newdevice.jpg"},
-        layoutData: {right: 46, top: "#settings 5", width: 94, height: 106}
+        layoutData: {right: 46, top: "#device_d 2", width: 94, height: 106}
     }).on("tap", function () {
         require("./codescanner.js").create('codescanner.js').open();
     }).appendTo(page);
@@ -112,6 +98,20 @@ exports.create = function () {
         alignment: "right",
         layoutData: {right: 32, top: "#addnew -18"},
         font: "19px"
+    }).appendTo(page);
+
+    new tabris.ImageView({
+        id: "settings",
+        image: {src: "images/settings.jpg"},
+        layoutData: {right: 40, top: "#addnew_d 2", width: 104, height: 101}
+    }).appendTo(page);
+
+    new tabris.TextView({
+        id: "settings_d",
+        text: "Settings",
+        alignment: "center",
+        layoutData: {right: 58, top: "#settings -16"},
+        font: "20px"
     }).appendTo(page);
 
     return page;
