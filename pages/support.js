@@ -35,10 +35,19 @@ exports.create = function () {
         opacity: 0.3
     }).appendTo(scrollView);
 
+    //CALL BUTTON
+    new tabris.Button({
+        id: "call",
+        text: "Dial a number",
+        layoutData: {top: "#logoline 2", centerX: 0}
+    }).on("select", function () {
+        cordova.InAppBrowser.open('tel:18004444444', '_system');
+    }).appendTo(scrollView);
+
 //Pete o'Donnell
     new tabris.ImageView({
         id: "pete",
-        layoutData: {left: 24, top: "#logoline 5"},
+        layoutData: {left: 24, top: "#call 5"},
         height: 117,
         width: 94,
         image: {src: "images/pete.png"}
@@ -47,7 +56,7 @@ exports.create = function () {
     new tabris.TextView({
         id: "pinfo",
         text: "Pete o'Donnell",
-        layoutData: {left: "#pete 5", top: "#logoline 20"},
+        layoutData: {left: "#pete 5", top: "#call 20"},
         font: "bold 18px"
     }).appendTo(scrollView);
 

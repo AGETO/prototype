@@ -106,7 +106,7 @@ exports.create = function () {
         background: "white",
         border: "1,126px solid #565656",
         elevation: 2
-    }).on("select", function () {
+        //}).on("select", function () {
     }).appendTo(page);
 
 //HANDYSURF
