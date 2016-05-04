@@ -279,8 +279,8 @@ function getDevices(id){
             maintenanceText.set("text", text || "No maintenance needed");
             if(maintenanceText.get("text") == "No maintenance needed"){
                 buttonDone.dispose();
-            };
-        };
+            }
+        }
     }
 }
 
@@ -295,7 +295,7 @@ function updateMaintenance(id, device_id, message){
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == 4 && xhttp.status == 200){
             getDevices(1);
-        };
+        }
     }
 }
 
