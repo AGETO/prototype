@@ -235,6 +235,16 @@ var maintenanceText = new tabris.TextView({
     centerX: 0, top: 50
 }).appendTo(maint);
 
+new tabris.Button({
+    text:"Done",
+    top:40,
+    left:"prev() 5",
+    width:60,
+    height:40
+}).on('tap', function(){
+    updateMaintenance(1, 2, "Needs an update");
+}).appendTo(maint);
+
 var stat = new tabris.Tab({
     title: "Statistics"
 }).appendTo(tabFolder);
@@ -253,6 +263,21 @@ page.apply({
     "#trouble": {layoutData: {top: "#updates 10", left: "#devpic 25"}, font: "15px", opacity: 0.8}
 });
 
+function updateMaintenance(id, device_id, message){
+    var xhttp = new XMLHttpRequest();
+    var url = "https://something-phoenix913.c9users.io:8081/api/user/deviceUpdate";
+    var params = "id=" + id + "&deviceid=" + device_id + "&message=" + message;
+    xhttp.open("POST", url, true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(params);
+    
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == 4 && xhttp.status == 200){
+            getDevices(1);
+        };
+    }
+}
+
 function getDevices(id){
     var xhttp = new XMLHttpRequest();
     var url = "https://something-phoenix913.c9users.io:8081/api/user/devices";
@@ -266,7 +291,10 @@ function getDevices(id){
             var rows = xhttp.responseText;
             var result = JSON.parse(rows);
             var text = result[1]['Maintenance'];
-            maintenanceText.set("text", text);
+            maintenanceText.set("text", text || "No maintenance needed");
+            if(maintenanceText.get("text") == "No maintenance needed"){
+                console.log("Ha");
+            };
         };
     }
 }
