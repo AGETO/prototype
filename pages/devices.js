@@ -1,6 +1,6 @@
 exports.create = function () {
 
-    var $ = require("./lib/jquery.min.js");
+    var $ = require("../lib/jquery.min.js");
 
     var page = new tabris.Page({
         topLevel: false,
@@ -461,32 +461,6 @@ function positionTrayInRestingState(velocity) {
         transform: {translationY: translationY}
     }, options);
 }
-
-function getDevices(id){
-    /*
-    $.ajax(
-        //url: "https://something-phoenix913.c9users.io:8081/api/user/devices",
-        //type: "POST",
-        //params:{id:id},
-        success:function(data){
-            Object.size = function(data) {
-                var size = 0, key;
-                for (key in obj) {
-                    if (obj.hasOwnProperty(key)) size++;
-                }
-                return size;
-            };
-
-                // Get the size of an object
-                var size = Object.size(data);
-                console.log(size);
-            }, error: function(){
-                console.log("Error");
-            });
-            */
-            $(page).alert("a");
-}
-
 
 function getStrapIconTransform(translationY) {
     var traveled = translationY / trayHeight;
