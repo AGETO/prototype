@@ -1,5 +1,7 @@
 exports.create = function () {
 
+    getDevices(1);
+
     var page = new tabris.Page({
         topLevel: false,
         title: "My Devices"
@@ -469,26 +471,24 @@ function getDevices(id){
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == 4 && xhttp.status == 200){
             var rows = xhttp.responseText;
-            console.log(rows);
-            if(rows.length > 0){
-                var result = JSON.parse(rows);
-                console.log(result[1]['status']);
-            }};
-        }
+            result = JSON.parse(rows);
+            console.log(result[1]['status']);
+        };
     }
+}
 
-    function getStrapIconTransform(translationY) {
-        var traveled = translationY / trayHeight;
-        return {rotation: traveled * Math.PI - Math.PI};
-    }
+function getStrapIconTransform(translationY) {
+    var traveled = translationY / trayHeight;
+    return {rotation: traveled * Math.PI - Math.PI};
+}
 
 
 
 
-    page.apply({
+page.apply({
 
-        "#search": {layoutData: {top: 14, left: 160, right: 80}, font: "13px", opacity: 0.3, border: "0px"},
-        "#scan": {layoutData: {left: "#search 10", right: 12, top: 12, height: 38}, font: "12px"},
+    "#search": {layoutData: {top: 14, left: 160, right: 80}, font: "13px", opacity: 0.3, border: "0px"},
+    "#scan": {layoutData: {left: "#search 10", right: 12, top: 12, height: 38}, font: "12px"},
 
         //device 1
         "#dev1": {layoutData: {left: 10, top: "#zdev 32"}, width: 141, height: 124},
@@ -534,5 +534,5 @@ function getDevices(id){
         "#line4": {layoutData: {left: 0, right: 0, top: "#details4 6"}, opacity: 0.3}
     });
 
-    return page;
+return page;
 };
