@@ -89,7 +89,7 @@ exports.create = function () {
         layoutData: {top: 420, centerX: 0},
         text: 'View Details'
     }).on("select", function () {
-        require("./handysurf.js").create("handysurf.js").open();
+        require("./duramax.js").create("duramax.js").open();
     }).appendTo(page);
 
     return page;

@@ -47,7 +47,7 @@ exports.create = function () {
 		markupEnabled: true
 	}).appendTo(page);
 
-	var forward = new tabris.Button({
+	new tabris.Button({
 		id: "ok",
 		text: "OK",
 		layoutData: {bottom: 70, centerX: 0}
@@ -55,12 +55,28 @@ exports.create = function () {
 		require("./questions.js").create('questions.js').open();
 	}).appendTo(page);
 
+	function reDirect() {
+		var re = /handysurf/gi;
+		var re2 = /duramax/gi;
+		var str = "Handysurf Portable Roughness Measurement Tool";
+		var str2 = "DuraMax LTE Measuring Equipment";
+
+		if (str.search(re) == 0) {
+			require("./questions.js").create('questions.js').open();
+		} else if (str2.search(re2) == 1) {
+			require("./duramax_q.js").create("duramax_q.js").open();
+		}
+	}
+
+
 	function scanBarcode() {
 		cordova.plugins.barcodeScanner.scan(function (result) {
+
 			resultView.set("text", result.cancelled ?
 				"<b>Scan cancelled</b>" :
-				"<b>Scan result:</b> " + result.text + " (" + result.format + ")");
-		}, function (error) {
+			"<b>Scan result:</b> " + result.text + " (" + result.format + ")" + reDirect());
+			},
+			function (error) {
 			resultView.set("text", "<b>Error:</b> " + error);
 		});
 	}
