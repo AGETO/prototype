@@ -210,15 +210,23 @@ var maint = new tabris.Tab({
     title: "Maintenance"
 }).appendTo(tabFolder);
 
-var maintenanceText = new tabris.TextView({
-    text: "Content of Tab Maintenance",
-    centerX: 0, top: 50
-}).appendTo(maint);
+     var maintenanceText = new tabris.TextView({
+         id: "mainthead",
+         text: "Content of Tab Maintenance",
+         layoutData: {top: 25, left: 5},
+         font: "bold 17px"
+     }).appendTo(maint);
 
+     new tabris.ImageView({
+         id: "maintline",
+         image: {src: "images/joon2.png"},
+         layoutData: {top: "#mainthead 12", left: 0, right: 0}
+     }).appendTo(maint);
+     
 var buttonDone = new tabris.Button({
     text:"Done",
-    top:40,
-    left:"prev() 5",
+    top: 15,
+    left: "#mainthead 15",
     width:60,
     height:40
 }).on('tap', function(){
