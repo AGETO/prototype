@@ -40,12 +40,6 @@ new tabris.TextView({
 }).appendTo(page);
 
 new tabris.TextView({
-    id: "updates",
-    alignment: "right",
-    text: "Available update(s)"
-}).appendTo(page);
-
-new tabris.TextView({
     id: "warnings",
     alignment: "right",
     text: "Device warnings"
@@ -244,9 +238,8 @@ page.apply({
     "#devpic": {layoutData: {top: "#zdev 10", left: 5}, width: 161, height: 144},
     "#dinf": {layoutData: {top: "#zdev 10", left: "#devpic 5"}, font: "bold 20px"},
     "#serial": {layoutData: {top: "#dinf 2", left: "#devpic 5"}, font: "16px"},
-    "#updates": {layoutData: {left: "#devpic 5", top: "#warnings 2"}, font: "16px"},
     "#warnings": {layoutData: {left: "#devpic 5", top: "#serial 2"}, font: "16px"},
-    "#trouble": {layoutData: {top: "#updates 10", left: "#devpic 25"}, font: "15px", opacity: 0.8}
+    "#trouble": {layoutData: {top: "#warning 15", left: "#devpic 25"}, font: "15px", opacity: 0.8}
 });
 
 function updateMaintenance(id, device_id, message){

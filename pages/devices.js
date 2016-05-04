@@ -80,7 +80,7 @@ new tabris.TextView({
     text: "Device warnings"
 }).appendTo(scrollView);
 
-new tabris.TextView({
+var messages = new tabris.TextView({
     id: "messages",
     alignment: "left",
     text: "Messages"
@@ -135,7 +135,7 @@ new tabris.TextView({
     text: "Device warnings"
 }).appendTo(scrollView);
 
-new tabris.TextView({
+var messages2 = new tabris.TextView({
     id: "messages2",
     alignment: "left",
     text: "Messages"
@@ -180,7 +180,7 @@ new tabris.TextView({
     text: "Device warnings"
 }).appendTo(scrollView);
 
-new tabris.TextView({
+var messages3 = new tabris.TextView({
     id: "messages3",
     alignment: "left",
     text: "Messages"
@@ -225,7 +225,7 @@ new tabris.TextView({
     text: "Device warnings"
 }).appendTo(scrollView);
 
-new tabris.TextView({
+var messages4 = new tabris.TextView({
     id: "messages4",
     alignment: "left",
     text: "Messages"
@@ -471,8 +471,16 @@ function getDevices(id){
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState == 4 && xhttp.status == 200){
             var rows = xhttp.responseText;
-            result = JSON.parse(rows);
-        };
+            var result = JSON.parse(rows);
+            var text1 = result[0]['Maintenance'];
+            var text2 = result[1]['Maintenance'];
+            var text3 = result[2]['Maintenance'];
+            var text4 = result[3]['Maintenance'];
+            messages.set("text", text1 || "No updates available");
+            messages2.set("text", text2 || "No updates available");
+            messages3.set("text", text3 || "No updates available");
+            messages4.set("text", text4 || "No updates available");
+        }
     }
 }
 
@@ -480,7 +488,6 @@ function getStrapIconTransform(translationY) {
     var traveled = translationY / trayHeight;
     return {rotation: traveled * Math.PI - Math.PI};
 }
-
 
 page.apply({
 
