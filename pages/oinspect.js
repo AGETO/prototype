@@ -221,7 +221,7 @@ var maintenanceText = new tabris.TextView({
     centerX: 0, top: 50
 }).appendTo(maint);
 
-new tabris.Button({
+var buttonDone = new tabris.Button({
     text:"Done",
     top:40,
     left:"prev() 5",
@@ -279,7 +279,7 @@ function getDevices(id){
             var text = result[2]['Maintenance'];
             maintenanceText.set("text", text || "No maintenance needed");
             if(maintenanceText.get("text") == "No maintenance needed"){
-                console.log("Ha");
+                buttonDone.dispose();
             };
         };
     }

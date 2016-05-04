@@ -482,8 +482,6 @@ function getStrapIconTransform(translationY) {
 }
 
 
-
-
 page.apply({
 
     "#search": {layoutData: {top: 14, left: 160, right: 80}, font: "13px", opacity: 0.3, border: "0px"},

@@ -279,7 +279,7 @@ function getDevices(id){
             var text = result[3]['Maintenance'];
             maintenanceText.set("text", text || "No maintenance needed");
             if(maintenanceText.get("text") == "No maintenance needed"){
-                console.log("Ha");
+                buttonDone.dispose();
             };
         };
     }
