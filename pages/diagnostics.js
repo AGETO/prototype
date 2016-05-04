@@ -52,7 +52,7 @@ exports.create = function () {
 		text: "OK",
 		layoutData: {bottom: 70, centerX: 0}
 	}).on("select", function () {
-		require("./questions.js").create('questions.js').open();
+		require("./devices.js").create('devices.js').open();
 	}).appendTo(page);
 
 	function reDirect() {
