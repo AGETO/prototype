@@ -7,12 +7,6 @@ exports.create = function () {
         require("./menu.js").create('menu.js').open();
     });
 
-    new tabris.Button({
-        text:"This"
-    }).on('tap', function(){
-        getDevices(1);
-    }).appendTo(page);
-
     var scrollView = new tabris.ScrollView({
         left: 0, right: 0, top: 0, bottom: 0
     }).appendTo(page);
