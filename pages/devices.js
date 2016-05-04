@@ -472,7 +472,6 @@ function getDevices(id){
         if (xhttp.readyState == 4 && xhttp.status == 200){
             var rows = xhttp.responseText;
             result = JSON.parse(rows);
-            console.log(result[1]['status']);
         };
     }
 }
