@@ -1,7 +1,5 @@
 exports.create = function () {
 
-    var $ = require("../lib/jquery.min.js");
-
     var page = new tabris.Page({
         topLevel: false,
         title: "My Devices"
@@ -9,7 +7,11 @@ exports.create = function () {
         require("./menu.js").create('menu.js').open();
     });
 
-    getDevices(1);
+    new tabris.Button({
+        text:"This"
+    }).on('tap', function(){
+        getDevices(1);
+    }).appendTo(page);
 
     var scrollView = new tabris.ScrollView({
         left: 0, right: 0, top: 0, bottom: 0
@@ -462,16 +464,37 @@ function positionTrayInRestingState(velocity) {
     }, options);
 }
 
-function getStrapIconTransform(translationY) {
-    var traveled = translationY / trayHeight;
-    return {rotation: traveled * Math.PI - Math.PI};
-}
+function getDevices(id){
+    var xhttp = new XMLHttpRequest();
+    var url = "https://something-phoenix913.c9users.io:8081/api/user/devices";
+    var params = "id=" + id;
+    xhttp.open("POST", url, true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send(params);
+    
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState == 4 && xhttp.status == 200){
+            var rows = xhttp.responseText;
+            console.log(rows);
+            if(rows.length > 0){
+                var result = JSON.parse(rows);
+                console.log(result[1]['status']);
+            }};
+        }
+    }
+
+    function getStrapIconTransform(translationY) {
+        var traveled = translationY / trayHeight;
+        return {rotation: traveled * Math.PI - Math.PI};
+    }
 
 
-page.apply({
 
-    "#search": {layoutData: {top: 14, left: 160, right: 80}, font: "13px", opacity: 0.3, border: "0px"},
-    "#scan": {layoutData: {left: "#search 10", right: 12, top: 12, height: 38}, font: "12px"},
+
+    page.apply({
+
+        "#search": {layoutData: {top: 14, left: 160, right: 80}, font: "13px", opacity: 0.3, border: "0px"},
+        "#scan": {layoutData: {left: "#search 10", right: 12, top: 12, height: 38}, font: "12px"},
 
         //device 1
         "#dev1": {layoutData: {left: 10, top: "#zdev 32"}, width: 141, height: 124},
@@ -517,5 +540,5 @@ page.apply({
         "#line4": {layoutData: {left: 0, right: 0, top: "#details4 6"}, opacity: 0.3}
     });
 
-return page;
+    return page;
 };
