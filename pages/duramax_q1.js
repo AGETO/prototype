@@ -35,9 +35,10 @@ exports.create = function () {
 
 
     new tabris.TextView({
-        id: "ledColor",
+        id: "D_error",
         layoutData: {centerX: 0, top: "#zdev 80"},
-        text: "Is the main control led green?",
+        text: "Is an error displayed in device lcd?",
+        alignment: "center",
         font: "bold 26px"
     }).appendTo(page);
 
@@ -68,7 +69,7 @@ exports.create = function () {
         layoutData: {top: 420, centerX: 0},
         text: 'Next'
     }).on("select", function () {
-        require("./questions1.js").create("questions1.js").open();
+        require("./duramax.js").create("duramax.js").open();
     }).appendTo(page);
 
     return page;

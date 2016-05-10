@@ -32,28 +32,32 @@ exports.create = function () {
 
     new tabris.ImageView({
         image: {src: "images/joon2.png"},
-        layoutData: {left: 0, right: 0, top: "#scan 20"},
+        layoutData: {left: 0, right: 0, top: "#myzeiss 20"},
         opacity: 0.3
     }).appendTo(scrollView);
 
-    new tabris.Button({
-        id: "scan",
-        text: "Scan",
-        background: "white",
-        // border: "1,126px solid #565656"
-        elevation: 90
-    }).on("select", function () {
-        require("./codescanner.js").create('codescanner.js').open();
+    var lists = [
+        {
+            id: "first",
+            name: "List 1"
+        },
+        {
+            id: "second",
+            name: "List 2"
+        }
+    ];
+
+    new tabris.Picker({
+        layoutData: {left: "#myzeiss 50", right: 12, top: 12, height: 38},
+        items: lists,
+        itemText: function (list) {
+            return list.name;
+        },
+        selection: lists[0]
+    }).on("change:selection", function () {
+        require("./list2.js").create('list2.js').open();
     }).appendTo(scrollView);
 
-    new tabris.TextInput({
-        id: "search",
-        text: "Search",
-        alignment: "left",
-        width: 120,
-        elevation: 2,
-        background: "white"
-    }).appendTo(scrollView);
 //end of header
 
 //DURAMAX LTE
@@ -120,7 +124,7 @@ new tabris.ImageView({
 new tabris.TextView({
     id: "dev2info",
     alignment: "left",
-    text: "HANDYSURF\nPortable roughness measurement tool"
+    text: "HANDYSURF\nPortable roughness\nmeasurement tool"
 }).appendTo(scrollView);
 
 new tabris.TextView({

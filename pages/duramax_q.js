@@ -36,13 +36,13 @@ exports.create = function () {
 
     new tabris.TextView({
         id: "ledColor",
-        layoutData: {left: 25, top: "#zdev 80"},
+        layoutData: {centerX: 0, top: "#zdev 80"},
         text: "Is the main control led green?",
-        font: "16px"
+        font: "bold 26px"
     }).appendTo(page);
 
-    var composite1 = new tabris.Composite({
-        layoutData: {left: 0, top: 0, bottom: 0, right: "50%"}
+    var composite = new tabris.Composite({
+        layoutData: {left: 85, top: 60, bottom: 0}
     }).appendTo(page);
 
     ["Yes", "No"].forEach(function (title) {
@@ -53,33 +53,12 @@ exports.create = function () {
             if (selection) {
                 console.log(widget.get("text") + " selected");
             }
-        }).appendTo(composite1);
+        }).appendTo(composite);
     });
 
-    new tabris.TextView({
-        id: "errorDisplay",
-        layoutData: {left: 25, top: 250},
-        text: "Is an error displayed in device lcd?",
-        font: "16px"
-    }).appendTo(page);
-
-    var composite2 = new tabris.Composite({
-        layoutData: {left: 0, top: 0, bottom: 0, right: "50%"}
-    }).appendTo(page);
-
-    ["Yes", "No"].forEach(function (title) {
-        new tabris.RadioButton({
-            layoutData: {left: 'prev() 25', top: 290},
-            text: title
-        }).on("change:selection", function (widget, selection) {
-            if (selection) {
-                console.log(widget.get("text") + " selected");
-            }
-        }).appendTo(composite2);
-    });
 
     new tabris.Button({
-        layoutData: {top: 370, centerX: 0},
+        layoutData: {top: 350, centerX: 0},
         text: 'Call Support'
     }).on("select", function () {
         cordova.InAppBrowser.open('tel:56853479', '_system');
@@ -87,9 +66,9 @@ exports.create = function () {
 
     new tabris.Button({
         layoutData: {top: 420, centerX: 0},
-        text: 'View Details'
+        text: 'Next'
     }).on("select", function () {
-        require("./duramax.js").create("duramax.js").open();
+        require("./duramax_q1.js").create("duramax_q1.js").open();
     }).appendTo(page);
 
     return page;

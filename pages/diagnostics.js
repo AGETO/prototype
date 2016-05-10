@@ -52,28 +52,27 @@ exports.create = function () {
         text: "OK",
         layoutData: {bottom: 70, centerX: 0}
     }).on("select", function () {
-        require("./devices.js").create('devices.js').open();
+        reDirect();
     }).appendTo(page);
 
     function reDirect() {
-        var re = /handysurf/gi;
-        var re2 = /duramax/gi;
-        var str = "Handysurf Portable Roughness Measurement Tool";
-        var str2 = "DuraMax LTE Measuring Equipment";
 
-        if (str.search(re) == 0) {
-            require("./questions.js").create('questions.js').open();
-        } else if (str2.search(re2) == 1) {
-            require("./duramax_q.js").create("duramax_q.js").open();
+        var a = globalResult.text;
+        if (/Handysurf/.test(a)) {
+            require("./questions.js").create("questions.js").open();
+        } else if (/DuraMax/.test(a)) {
+            require("./duramax_q.js").create('duramax_q.js').open();
         }
     }
 
+    var globalResult;
 
     function scanBarcode() {
         cordova.plugins.barcodeScanner.scan(function (result) {
+                globalResult = result;
                 resultView.set("text", result.cancelled ?
                     "<b>Scan cancelled</b>" :
-                "<b>Scan result:</b> " + result.text + " (" + result.format + ")" + reDirect());
+                "<b>Scan result:</b> " + result.text + " (" + result.format + ")");
             },
             function (error) {
                 resultView.set("text", "<b>Error:</b> " + error);
