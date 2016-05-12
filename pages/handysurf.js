@@ -1,7 +1,7 @@
 /**
  * Created by ruibo on 29.04.2016.
  */
- exports.create = function () {
+ exports.create = function (apiBaseURL) {
 
     getDevices(1);
 
@@ -9,7 +9,7 @@
         topLevel: false,
         title: "Device Details"
     }).on('backButtonPressed', function () {
-        require("./devices.js").create('devices.js').open();
+        require("./devices.js").create(apiBaseURL).open();
     });
 
      //header
@@ -266,7 +266,7 @@ page.apply({
 
 function updateMaintenance(id, device_id, message){
     var xhttp = new XMLHttpRequest();
-    var url = "https://something-phoenix913.c9users.io:8081/api/user/deviceUpdate";
+    var url = apiBaseURL + "/user/deviceUpdate";
     var params = "id=" + id + "&deviceid=" + device_id + "&message=" + message;
     xhttp.open("POST", url, true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -281,7 +281,7 @@ function updateMaintenance(id, device_id, message){
 
 function getDevices(id){
     var xhttp = new XMLHttpRequest();
-    var url = "https://something-phoenix913.c9users.io:8081/api/user/devices";
+    var url = apiBaseURL + "/user/devices";
     var params = "id=" + id;
     xhttp.open("POST", url, true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

@@ -1,4 +1,4 @@
-exports.create = function () {
+exports.create = function (apiBaseURL) {
 
     getDevices(1);
 
@@ -6,7 +6,7 @@ exports.create = function () {
         topLevel: false,
         title: "My Devices"
     }).on('backButtonPressed', function () {
-        require("./menu.js").create('menu.js').open();
+        require("./menu.js").create(apiBaseURL).open();
     });
 
     var scrollView = new tabris.ScrollView({
@@ -55,7 +55,7 @@ exports.create = function () {
         },
         selection: lists[1]
     }).on("change:selection", function () {
-        require("./devices.js").create('devices.js').open();
+        require("./devices.js").create(apiBaseURL).open();
     }).appendTo(scrollView);
 
 //end of header
@@ -107,7 +107,7 @@ exports.create = function () {
         text: "Details...",
         highlightOnTouch: true
     }).on("tap", function () {
-        require("./handysurf.js").create('handysurf.js').open();
+        require("./handysurf.js").create(apiBaseURL).open();
     }).appendTo(scrollView);
 
     new tabris.ImageView({
@@ -152,7 +152,7 @@ exports.create = function () {
         text: "Details...",
         highlightOnTouch: true
     }).on("tap", function () {
-        require("./oinspect.js").create('oinspect.js').open();
+        require("./oinspect.js").create(apiBaseURL).open();
     }).appendTo(scrollView);
 
     new tabris.ImageView({
@@ -197,7 +197,7 @@ exports.create = function () {
         text: "Details...",
         highlightOnTouch: true
     }).on("tap", function () {
-        require("./surfcom.js").create('surfcom.js').open();
+        require("./surfcom.js").create(apiBaseURL).open();
     }).appendTo(scrollView);
 
     new tabris.ImageView({
@@ -422,7 +422,7 @@ exports.create = function () {
 
     function getDevices(id) {
         var xhttp = new XMLHttpRequest();
-        var url = "https://something-phoenix913.c9users.io:8081/api/user/devices";
+        var url = apiBaseURL + "/user/devices";
         var params = "id=" + id;
         xhttp.open("POST", url, true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

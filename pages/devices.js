@@ -1,4 +1,4 @@
-exports.create = function () {
+exports.create = function (apiBaseURL) {
 
     getDevices(1);
 
@@ -6,7 +6,7 @@ exports.create = function () {
         topLevel: false,
         title: "My Devices"
     }).on('backButtonPressed', function () {
-        require("./menu.js").create('menu.js').open();
+        require("./menu.js").create(apiBaseURL).open();
     });
 
     var scrollView = new tabris.ScrollView({
@@ -55,7 +55,7 @@ exports.create = function () {
         },
         selection: lists[0]
     }).on("change:selection", function () {
-        require("./list2.js").create('list2.js').open();
+        require("./list2.js").create(apiBaseURL).open();
     }).appendTo(scrollView);
 
 //end of header
@@ -96,7 +96,7 @@ new tabris.TextView({
     text: "Details...",
     highlightOnTouch: true
 }).on("tap", function () {
-    require("./duramax.js").create('duramax.js').open();
+    require("./duramax.js").create(apiBaseURL).open();
 }).appendTo(scrollView);
 
 new tabris.ImageView({
@@ -151,7 +151,7 @@ new tabris.TextView({
     text: "Details...",
     highlightOnTouch: true
 }).on("tap", function () {
-    require("./handysurf.js").create('handysurf.js').open();
+    require("./handysurf.js").create(apiBaseURL).open();
 }).appendTo(scrollView);
 
 new tabris.ImageView({
@@ -196,7 +196,7 @@ new tabris.TextView({
     text: "Details...",
     highlightOnTouch: true
 }).on("tap", function () {
-    require("./oinspect.js").create('oinspect.js').open();
+    require("./oinspect.js").create(apiBaseURL).open();
 }).appendTo(scrollView);
 
 new tabris.ImageView({
@@ -241,7 +241,7 @@ new tabris.TextView({
     text: "Details...",
     highlightOnTouch: true
 }).on("tap", function () {
-    require("./surfcom.js").create('surfcom.js').open();
+    require("./surfcom.js").create(apiBaseURL).open();
 }).appendTo(scrollView);
 
 new tabris.ImageView({
@@ -466,7 +466,7 @@ function positionTrayInRestingState(velocity) {
 
 function getDevices(id){
     var xhttp = new XMLHttpRequest();
-    var url = "https://something-phoenix913.c9users.io:8081/api/user/devices";
+    var url = apiBaseURL + "/user/devices";
     var params = "id=" + id;
     xhttp.open("POST", url, true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

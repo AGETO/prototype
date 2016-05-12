@@ -1,12 +1,14 @@
-exports.create = function () {
+exports.create = function (apiBaseURL) {
 
 	var page = new tabris.Page({
         title: "Add a Device",
         topLevel: false
     }).on('backButtonPressed', function () {
-        require("./devices.js").create('devices.js').open();
+        require("./devices.js").create(apiBaseURL).open();
     });
 
+    var globalResult;
+	
 	new tabris.Button({
         layoutData: {left: 10, top: 150, right: 10},
         text: "Scan Barcode"
@@ -56,36 +58,24 @@ exports.create = function () {
     }).appendTo(page);
 
 	function reDirect() {
-
         var b = globalResult.text;
         if (/DuraMax/.test(b)) {
-            require("./duramax.js").create("duramax.js").open();
+            require("./duramax.js").create(apiBaseURL).open();
         }else if(/HANDYSURF/.test(b)){
-			require("./handysurf.js").create("handysurf.js").open();
+			require("./handysurf.js").create(apiBaseURL).open();
 		}else if(/O-INSPECT/.test(b)){
-			require("./oinspect.js").create("oinspect.js").open();
+			require("./oinspect.js").create(apiBaseURL).open();
 		}else if(/SURFCOM/.test(b)){
-			require("./surfcom.js").create("surfcom.js").open();
+			require("./surfcom.js").create(apiBaseURL).open();
 		}
     }
 
-    var globalResult;
+
 
     function scanBarcode() {
         cordova.plugins.barcodeScanner.scan(function (result) {
-                globalResult = result;
-                resultView.set("text", result.cancelled ?
-                    "<b>Scan cancelled</b>" :
-                "<b>Scan result:</b> " + result.text + " (" + result.format + ")");
-            },
-            function (error) {
-                resultView.set("text", "<b>Error:</b> " + error);
-            });
-    }
-
-    function scanBarcode() {
-        cordova.plugins.barcodeScanner.scan(function (result) {
-            resultView.set("text", result.cancelled ?
+            globalResult = result;
+			resultView.set("text", result.cancelled ?
                 "<b>Scan cancelled</b>" :
             "<b>Scan result:</b> " + result.text + " (" + result.format + ")");
         }, function (error) {
