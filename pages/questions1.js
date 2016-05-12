@@ -37,7 +37,7 @@ exports.create = function (apiBaseURL) {
     new tabris.TextView({
         id: "D_error",
         layoutData: {centerX: 0, top: "#zdev 80"},
-        text: "Is an error displayed in device lcd?",
+        text: "Is an error displayed on device?",
         alignment: "center",
         font: "bold 26px"
     }).appendTo(page);

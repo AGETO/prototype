@@ -61,7 +61,7 @@ exports.create = function (apiBaseURL) {
         var b = globalResult.text;
         if (/DuraMax/.test(b)) {
             require("./duramax.js").create(apiBaseURL).open();
-        }else if(/HANDYSURF/.test(b)){
+        }else if(/Handysurf/.test(b)){
 			require("./handysurf.js").create(apiBaseURL).open();
 		}else if(/O-INSPECT/.test(b)){
 			require("./oinspect.js").create(apiBaseURL).open();
