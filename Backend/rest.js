@@ -45,7 +45,7 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
 
     router.post("/user/devices",function(req,res){
     var user_id =  req.body.id;
-    var query = "select device_name, status from ?? where ?? like ?";
+    var query = "select * from ?? where ?? like ?";
     var table = ["device", "user_id", user_id];
     query = mysql.format(query,table);
     var q = connection.query(query,function(err,rows){
@@ -56,6 +56,24 @@ REST_ROUTER.prototype.handleRoutes= function(router,connection,md5) {
             res.json(rows);
         }else{
             res.json(rows);
+        }});
+    });
+    
+    router.post("/user/deviceUpdate",function(req,res){
+    var user_id =  req.body.id;
+    var device_id = req.body.deviceid;
+    var message = req.body.message;
+    var query = "update device set ??=? where ??=? AND ??=?";
+    var table = ["Maintenance", message, "user_id", user_id, "device_id", device_id];
+    query = mysql.format(query,table);
+    var q = connection.query(query,function(err,rows){
+        if(err) {
+		    res.status(500);
+            res.json({"Error" : true, "Message" : "Error executing MySQL query, " + err});
+        } else if(rows.length > 0) {
+            res.json(true);
+        }else{
+            res.json(true);
         }});
     });
 	

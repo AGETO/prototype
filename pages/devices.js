@@ -169,7 +169,7 @@ new tabris.ImageView({
 new tabris.TextView({
     id: "dev3info",
     alignment: "left",
-    text: "O-INSPECT 322\Measuring range [dm] 3/2/2"
+    text: "O-INSPECT 322\nMeasuring range\n[dm] 3/2/2"
 }).appendTo(scrollView);
 
 new tabris.TextView({
@@ -214,7 +214,7 @@ new tabris.ImageView({
 new tabris.TextView({
     id: "dev4info",
     alignment: "left",
-    text: "SURFCOM FLEX\nMobile control and analysis unit"
+    text: "SURFCOM FLEX\nMobile control and\nanalysis unit"
 }).appendTo(scrollView);
 
 new tabris.TextView({
@@ -511,7 +511,7 @@ page.apply({
         "#filter": {
             layoutData: {left: 280, top: "zdev 80", height: 40, right: 5},
             font: "12px",
-            opacity: 0.9
+            opacity: 0.0
         },
 
         //device 2

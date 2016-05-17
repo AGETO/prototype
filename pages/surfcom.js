@@ -227,7 +227,7 @@ var buttonDone = new tabris.Button({
     text:"Done",
     top: 15,
     left: "#mainthead 15",
-    width:60,
+    width:80,
     height:40
 }).on('tap', function(){
     updateMaintenance(1, 4, "");
